@@ -1,0 +1,14 @@
+[Unit]
+Description=Mon application
+After=network.target
+
+[Service]
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/hyont-nick/.Xauthority
+Environment=XDG_RUNTIME_DIR=/run/user/$(id -u)
+ExecStart=/usr/bin/sudo -u hyont-nick /usr/bin/python3 /home/hyont-nick/DATA_ANALYST/Soutenance/app/am.py
+#ExecStart=/usr/bin/python3 /home/hyont-nick/DATA_ANALYST/Soutenance/app/am.py
+
+[Install]
+WantedBy=default.target
+
