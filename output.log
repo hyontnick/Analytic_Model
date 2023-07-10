@@ -1,0 +1,258 @@
+INFO:root:RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            5     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  1.54429D+00    |proj g|=  1.68903D-01
+
+At iterate    5    f=  1.48946D+00    |proj g|=  5.18986D-02
+
+At iterate   10    f=  1.46999D+00    |proj g|=  5.11825D-03
+
+At iterate   15    f=  1.46876D+00    |proj g|=  3.13739D-03
+
+At iterate   20    f=  1.46609D+00    |proj g|=  5.17184D-02
+
+At iterate   25    f=  1.46475D+00    |proj g|=  5.20377D-04
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    5     28     37      1     0     0   9.727D-06   1.465D+00
+  F =   1.4647483270001440     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            5     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  4.68821D+00    |proj g|=  1.00508D+00
+
+At iterate    5    f=  4.17826D+00    |proj g|=  1.07135D-02
+
+At iterate   10    f=  4.16551D+00    |proj g|=  3.86177D-03
+
+At iterate   15    f=  4.15245D+00    |proj g|=  4.32735D-03
+  ys=-2.131E-06  -gs= 1.703E-08 BFGS update SKIPPED
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    5     19     38      1     1     0   0.000D+00  -0.000D+00
+  F =  -0.0000000000000000     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            4     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  9.33014D+00    |proj g|=  8.08552D-02
+
+At iterate    5    f=  9.29379D+00    |proj g|=  1.49129D-02
+
+At iterate   10    f=  9.29145D+00    |proj g|=  1.48157D-04
+
+At iterate   15    f=  9.29141D+00    |proj g|=  2.59343D-03
+
+At iterate   20    f=  9.26173D+00    |proj g|=  1.70398D-01
+
+At iterate   25    f=  9.21698D+00    |proj g|=  6.29434D-05
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    4     26     33      1     0     0   1.183D-05   9.217D+00
+  F =   9.2169823753066069     
+
+CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH             
+Le fichier commercial1.csv n'existe pas.
+Le fichier commercial11.csv existe.
+Le fichier commercial11.csv a été supprimé.
+Le fichier commercial2.csv n'existe pas.
+Le fichier commercial22.csv existe.
+Le fichier commercial22.csv a été supprimé.
+Le fichier commercial2.csv n'existe pas.
+Le fichier commerciali1.csv existe.
+Le fichier commercial33.csv a été supprimé.
+Le fichier commercial4.csv n'existe pas.
+Le fichier commercial44.csv existe.
+Le fichier commercial44.csv a été supprimé.
+Opportunités de croissance :
+    Mois  Ventes  Croissance
+1    Fév  592442   40.145340
+3    Avr  381206    2.465366
+4    Mai  894290  134.594943
+7   Août  955494  154.473353
+10   Nov  206150   13.590655
+11   Déc  958373  364.891099
+Le fichier commercial5.csv n'existe pas.
+Le fichier commercial55.csv existe.
+Le fichier commercial55.csv a été supprimé.
+Le fichier commercial6.csv n'existe pas.
+Le fichier commercial66.csv existe.
+Le fichier commercial66.csv a été supprimé.
+Le fichier commercial7.csv n'existe pas.
+Le fichier commercial77.csv existe.
+Le fichier commercial77.csv a été supprimé.
+Le fichier commercial8.csv n'existe pas.
+Le fichier commercial88.csv existe.
+Le fichier commercial88.csv a été supprimé.
+Le fichier commercial9.csv n'existe pas.
+Le fichier commercial99.csv existe.
+Le fichier commercial99.csv a été supprimé.
+Le fichier commercial10.csv n'existe pas.
+Le fichier commercial1010.csv existe.
+Le fichier commercial1010.csv a été supprimé.
+Le fichier economique1.csv n'existe pas.
+Le fichier economique11.csv existe.
+Le fichier economique11.csv a été supprimé.
+Le fichier economique2.csv n'existe pas.
+Le fichier economique11.csv existe.
+Le fichier economique22.csv a été supprimé.
+Le fichier economique3.csv n'existe pas.
+Le fichier economique33.csv existe.
+Le fichier economique33.csv a été supprimé.
+Le fichier economique4.csv n'existe pas.
+Le fichier economique44.csv existe.
+Le fichier economique33.csv a été supprimé.
+Le fichier economique5.csv n'existe pas.
+Le fichier economique55.csv existe.
+Le fichier economique55.csv a été supprimé.
+Le fichier economique6.csv n'existe pas.
+Le fichier economique66.csv existe.
+Le fichier economique66.csv a été supprimé.
+Le fichier economique5.csv n'existe pas.
+Le fichier economique77.csv existe.
+Le fichier economique77.csv a été supprimé.
+Le fichier economique8.csv n'existe pas.
+Le fichier economique88.csv existe.
+Le fichier economique88.csv a été supprimé.
+Le fichier economique9.csv n'existe pas.
+Le fichier economique99.csv existe.
+Le fichier economique99.csv a été supprimé.
+Le fichier economique10.csv n'existe pas.
+Le fichier economique1010.csv existe.
+Le fichier economique1010.csv a été supprimé.
+Le fichier educatif1.csv n'existe pas.
+Le fichier educatif1.csv existe.
+Le fichier educatif11.csv a été supprimé.
+Le fichier educatif2.csv n'existe pas.
+Le fichier educatif2.csv existe.
+Le fichier educatif22.csv a été supprimé.
+Le fichier educatif3.csv n'existe pas.
+Le fichier educatif3.csv existe.
+Le fichier educatif33.csv a été supprimé.
+Le fichier educatif4.csv n'existe pas.
+Le fichier educatif4.csv existe.
+Le fichier educatif44.csv a été supprimé.
+Le fichier educatif5.csv n'existe pas.
+Le fichier educatif5.csv existe.
+Le fichier educatif55.csv a été supprimé.
+Le fichier educatif6.csv n'existe pas.
+Le fichier educatif6.csv existe.
+Le fichier educatif66.csv a été supprimé.
+Le fichier educatif7.csv n'existe pas.
+Le fichier educatif7.csv existe.
+Le fichier educatif77.csv a été supprimé.
+Le fichier educatif8.csv n'existe pas.
+Le fichier educatif8.csv existe.
+Le fichier educatif88.csv a été supprimé.
+Le fichier educatif9.csv n'existe pas.
+Le fichier educatif9.csv existe.
+Le fichier educatif99.csv a été supprimé.
+Le fichier educatif10.csv n'existe pas.
+Le fichier educatif1010.csv existe.
+Le fichier educatif1010.csv a été supprimé.
+Cluster 0:
+Momo
+Epassi
+Eteme
+
+
+Cluster 2:
+Tsague
+
+
+Cluster 1:
+Dongmo
+Meli
+Djamen
+Mohamed
+
+
+Le fichier sanitaire1.csv n'existe pas.
+Le fichier sanitaire11.csv existe.
+Le fichier sanitaire11.csv a été supprimé.
+Le fichier sanitaire2.csv n'existe pas.
+Le fichier sanitaire22.csv existe.
+Le fichier sanitaire22.csv a été supprimé.
+Le fichier sanitaire3.csv n'existe pas.
+Le fichier sanitaire33.csv existe.
+Le fichier sanitaire33.csv a été supprimé.
+Le fichier sanitaire4.csv n'existe pas.
+Le fichier sanitaire44.csv existe.
+Le fichier sanitaire4.csv a été supprimé.
+Le fichier sanitaire5.csv n'existe pas.
+Le fichier sanitaire55.csv existe.
+Le fichier sanitaire55.csv a été supprimé.
+Le fichier sanitaire6.csv n'existe pas.
+Le fichier sanitaire66.csv existe.
+Le fichier sanitaire66.csv a été supprimé.
+Le fichier sanitaire7.csv n'existe pas.
+Le fichier sanitaire77.csv existe.
+Le fichier sanitaire77.csv a été supprimé.
+AUC-ROC: 0.4206060606060606
+Le fichier sanitaire8.csv n'existe pas.
+Le fichier sanitaire88.csv existe.
+Le fichier sanitaire88.csv a été supprimé.
+Le fichier sanitaire9.csv n'existe pas.
+Le fichier sanitaire99.csv existe.
+Le fichier sanitaire99.csv a été supprimé.
+Le fichier sanitaire10.csv n'existe pas.
+Le fichier sanitaire1010.csv existe.
+Le fichier sanitaire1010.csv a été supprimé.
+

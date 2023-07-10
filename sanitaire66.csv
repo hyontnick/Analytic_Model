@@ -1,0 +1,13 @@
+types_de_soins,mois,montants,couts
+Consultation,Janvier,46039,67083
+Chirurgie,Février,60194,67103
+Radiologie,Mars,88303,86164
+Laboratoire,Avril,48221,84788
+Médicaments,Mai,29642,33933
+Soins infirmiers,Juin,78889,37020
+Thérapie physique,Juillet,53500,89734
+Soins dentaires,Août,71254,52564
+Soins oculaires,Septembre,72971,72788
+Soins de maternité,Octobre,38200,54447
+Soins psychiatriques,Novembre,69525,67414
+Soins de réadaptation,Décembre,35651,82120

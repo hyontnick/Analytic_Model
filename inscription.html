@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="img/icone.png">
+  <title>Inscription</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: rgb(69, 119, 119);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    #logo {
+      text-align:center;
+      display:block;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      margin-bottom: 80px; /* Hauteur du footer + marge supplémentaire */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    #connect{
+        color: rgb(4, 111, 233);
+        text-decoration: none;
+        
+    }
+    .error {
+      color: red;
+      margin-top: 5px;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .footer-links li {
+      margin-left: 20px;
+    }
+
+    .footer-links li:first-child {
+      margin-left: 0;
+    }
+
+    .footer-links li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="logo">
+    <a href="#">
+        <img src="img/icone_logo.png" alt="">
+    </a>
+    <h1>Analytic Model</h1>
+  </div>
+  <form id="inscriptionForm" action="connexion.html" method="post">
+    <!-- <h2>inscription</h2> -->
+    <label for="username">Nom d'utilisateur:</label>
+    <input type="text" id="username" name="username" placeholder="Hyonta">
+
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password" name="password">
+    <span id="passwordError" class="error"></span>
+
+    <label for="confirm_password">Confirmer le mot de passe:</label>
+    <input type="password" id="confirm_password" name="confirm_password">
+    <span id="confirmPasswordError" class="error"></span>
+
+    <label for="access_code">Code d'accès:</label>
+    <input type="password" id="access_code" name="access_code">
+    <span id="accessCodeError" class="error"></span>
+
+    <input type="submit" value="S'inscrire">
+    <a href="connexion.html" id="connect">Déjà inscrit ? Connectez-vous</a>
+  </form>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2023 Analytic Model. Tous droits réservés.</p>
+      <ul class="footer-links">
+        <span>by</span>
+        <li><a href="https://devprofilehkb.netlify.app/">Hyonta KB</a></li>
+        <!-- <li><a href="#">À propos</a></li>
+        <li><a href="#">Contact</a></li> -->
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('inscriptionForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var confirm_password = document.getElementById('confirm_password').value;
+      var access_code = document.getElementById('access_code').value;
+
+      var passwordError = document.getElementById('passwordError');
+      var confirmPasswordError = document.getElementById('confirmPasswordError');
+      var accessCodeError = document.getElementById('accessCodeError');
+
+      passwordError.textContent = '';
+      confirmPasswordError.textContent = '';
+      accessCodeError.textContent = '';
+
+      var valid = true;
+
+      // Vérification des conditions de sécurité du mot de passe
+      if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/\d/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        passwordError.textContent = 'Le mot de passe ne respecte pas les conditions de sécurité.';
+        valid = false;
+      }
+
+      // Vérification de correspondance du mot de passe confirmé
+      if (password !== confirm_password) {
+        confirmPasswordError.textContent = 'Le mot de passe confirmé ne correspond pas au mot de passe.';
+        valid = false;
+      }
+
+      // Vérification du code d'accès
+      if (!/^\d{12}$/.test(access_code)) {
+        accessCodeError.textContent = 'Le code d\'accès doit contenir 12 chiffres.';
+        valid = false;
+      }
+
+      if (valid) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/inscription', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+            window.location.href = "http://192.168.8.100:8000/connexion.html";
+          }
+        };
+        var data = 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password) +
+          '&confirm_password=' + encodeURIComponent(confirm_password) + '&access_code=' + encodeURIComponent(access_code);
+        xhr.send(data);
+      }
+    });
+  </script>
+</body>
+</html>

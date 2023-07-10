@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/openai/src/openai.js"></script>
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+	<!-- Icone -->
+	<link rel="icon" type="image/png" href="img/icone.png">
+	<title>Analytic Model</title>
+</head>
+
+<body>
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link" onclick="showModel()">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" id="search-input" placeholder="Récherche...">
+					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<!-- <a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a> -->
+			<a href="#" class="profile">
+				<img src="img/people.png">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- SIDEBAR -->
+		<section id="sidebar">
+			<a href="#" class="brand">
+				<img src="img/icone_logo.png" alt="">
+				<!-- <i class='bx bxs-smile'></i> -->
+				<span class="text">Analytic Model</span>
+			</a>
+			<ul class="side-menu top">
+				<li class="active">
+					<a href="#" onclick="showModel()">
+						<i class='bx bxs-dashboard'></i>
+						<span class="text">MODÈLES</span>
+					</a>
+				</li>
+				<li onclick="showVisualisation()">
+					<a href="#">
+						<i class='bx bxs-bar-chart-alt-2'></i>
+						<span class="text">VISUALISATION</span>
+					</a>
+				</li>
+				<li onclick="showQuestions()">
+					<a href="#">
+						<i class='bx bx-question-mark'></i>
+						<span class="text">QUESTIONS</span>
+					</a>
+				</li>
+				<li onclick="showAnalyse()">
+					<a href="#">
+						<i class='bx bxs-message'></i>
+						<span class="text">AM ASSISTANT</span>
+					</a>
+				</li>
+				<!-- <li>
+			<a href="#">
+				<i class='bx bxs-group'></i>
+				<span class="text">Team</span>
+			</a>
+		</li> -->
+			</ul>
+			<ul class="side-menu">
+		<!-- <li>
+			<a href="#">
+				<i class='bx bxs-cog'></i>
+				<span class="text">Settings</span>
+			</a>
+		</li>-->
+		<li>
+			<a href="https://devprofilehkb.netlify.app/" class="logout">
+				<i class='bx bxs-user'></i>
+				<span class="text">by Hyonta KB</span>
+			</a>
+		</li> 
+			</ul>
+		</section>
+		<!-- SIDEBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<!-- ANALYSE -->
+			<div id="storeInfo" style="display: none;">
+					<div class="table-data">
+						<div class="todo">
+							<div class="head">
+				<div class="container">
+					<div id="chatbox"></div>
+					<div id="progress-bar">
+						<div id="progress-bar-inner"></div>
+					</div>
+					<div id="user-input-container">
+						<input type="text" id="user-input" placeholder="Posez une question..." />
+						<span id="typing-indicator"></span>
+						<button id="send-button">Envoyer</button>
+					</div>
+					<!-- <button id="send-button">Envoyer</button> -->
+					<button id="copy-button" disabled>Copier la réponse</button>
+				</div>
+				</div>
+				</div>
+		</div>
+			</div>
+			<!-- END ANALYSE -->
+
+			<!-- MODELS  -->
+			<div id="models" style="display: block;">
+				<ul class="box-info">
+
+					<li onclick="showSection('questions1')">
+						<i class='bx bxs-badge-dollar'></i>
+						<span class="text">
+							<h3>MODÈLE</h3>
+							<p>commercial</p>
+						</span>
+					</li>
+					<li onclick="showSection('questions2')">
+						<i class='bx bxs-ambulance'></i>
+						<span class="text">
+							<h3>MODÈLE</h3>
+							<p>sanitaire</p>
+						</span>
+					</li>
+					<li onclick="showSection('questions3')">
+						<i class='bx bxs-bank'></i>
+						<span class="text">
+							<h3>MODÈLE</h3>
+							<p>economique</p>
+						</span>
+					</li>
+					<li onclick="showSection('questions4')">
+						<i class='bx bxs-book'></i>
+						<span class="text">
+							<h3>MODÈLE</h3>
+							<p>educatif</p>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<!-- END MODELS -->
+
+			<!-- VISUALISATION -->
+			<div id="visualisation" style="display: none;">
+				<div class="table-data">
+					<div id="imageContainer">
+						<img id="image" src="data_img/commercial6.png"
+							width="1000" height="500">
+					</div>
+				</div>
+			</div>
+			<!-- END VISUALISATION -->
+
+			<!-- QUESTIONS -->
+			<!-- DIV 1 -->
+			<div id="questions" style="display: none;">
+				<div id="questions1" style="display: none;">
+					<div class="table-data">
+						<div class="todo">
+							<div class="head">
+								<h3>Commercial</h3>
+								<i class='bx bx-plus' onclick="showAnalyse()"></i>
+								<i class='bx bx-filter'></i>
+							</div>
+							<ul class="todo-list">
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/commercial1.png')">
+									<a href="#" id="links"><span class="text">Quels sont les facteurs clés qui
+											influencent les ventes d'un produit ou d'un service ? </span></a>
+									<a href="#"><i class='bx bx-dots-vertical-rounded'></i></a>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/commercial2.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je segmenter la clientèle en fonction de leurs caractéristiques
+											et comportements d'achat ?</p>
+									</a>
+									<a href="#"><i class='bx bx-dots-vertical-rounded'></i></a>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/commercial3.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les méthodes d'analyse prédictive pour estimer la demande future
+											d'un produit ou d'un service ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/commercial4.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je identifier les opportunités de croissance du chiffre
+											d'affaires en analysant les données des ventes ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/commercial5.png')">
+									<a href="#" id="links">
+										<p>Quels sont les modèles de prévision les plus appropriés pour estimer les
+											ventes à court et à long terme ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/commercial6.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser les données des clients pour optimiser les
+											stratégies de fidélisation et de rétention ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/commercial7.png')">
+									<a href="#" id="links">
+										<p>Quels sont les indicateurs de performance clés utilisés pour évaluer
+											l'efficacité d'une campagne marketing ou d'une stratégie commerciale ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/commercial8.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je analyser les données de prix et de concurrence pour optimiser
+											la stratégie de tarification d'un produit ou d'un service ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/commercial9.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les meilleures pratiques pour l'analyse des données de vente en
+											ligne, telles que le suivi des conversions ou l'analyse du parcours client ?
+										</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/commercial10.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser l'apprentissage automatique pour détecter les
+											schémas de comportement des clients et personnaliser les offres et les
+											recommandations ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<!-- ... Autres éléments de la liste ... -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- DIV 2 -->
+				<div id="questions2" style="display: none;">
+					<div class="table-data">
+						<div class="todo">
+							<div class="head">
+								<h3>Sanitaire</h3>
+								<i class='bx bx-plus'></i>
+								<i class='bx bx-filter'></i>
+							</div>
+							<ul class="todo-list">
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire1.png')">
+									<a href="#" id="links"><span class="text">Quelles sont les tendances actuelles des
+											maladies ou des conditions de santé dans une population donnée ?</span></a>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire2.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je identifier les facteurs de risque associés à une maladie
+											spécifique ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire3.png')">
+									<a href="#" id="links">
+										<p>Quelles méthodes d'analyse statistique puis-je utiliser pour évaluer
+											l'efficacité d'un traitement médical ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire4.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser les données épidémiologiques pour prédire la
+											propagation d'une maladie ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire5.png')">
+									<a href="#" id="links">
+										<p>Quels sont les indicateurs clés de performance utilisés pour évaluer la
+											qualité des soins de santé ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire6.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je analyser les données de remboursement des soins de santé pour
+											identifier les inefficiences ou les coûts élevés ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire7.png')">
+									<a href="#" id="links">
+										<p>Quels sont les modèles de prédiction les plus appropriés pour estimer la
+											probabilité de réadmission à l'hôpital pour un patient donné ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire8.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser l'apprentissage automatique pour détecter les
+											schémas d'anomalies dans les données de santé ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire9.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je analyser les données des essais cliniques pour évaluer
+											l'efficacité et la sécurité d'un médicament ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/sanitaire10.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les meilleures pratiques pour la gestion et la sécurité des
+											données de santé sensibles ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<!-- ... Autres éléments de la liste ... -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- DIV 3 -->
+				<div id="questions3" style="display: none;">
+					<div class="table-data">
+						<div class="todo">
+							<div class="head">
+								<h3>Economique</h3>
+								<i class='bx bx-plus'></i>
+								<i class='bx bx-filter'></i>
+							</div>
+							<ul class="todo-list">
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/economique1.png')">
+									<a href="#" id="links"><span class="text">Quelles sont les tendances économiques
+											actuelles au niveau national ou mondial ?</span></a>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/economique2.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je identifier les principaux indicateurs économiques qui
+											influencent la croissance économique ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/economique3.png')">
+									<a href="#" id="links">
+										<p>Quels modèles économétriques puis-je utiliser pour prévoir l'évolution d'une
+											variable économique spécifique, telle que le PIB ou l'inflation ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/economique4.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je analyser les données du marché du travail pour évaluer la
+											situation de l'emploi et détecter les tendances émergentes ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/economique5.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les méthodes d'analyse économique pour évaluer l'impact des
+											politiques publiques ou des changements réglementaires sur l'économie ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/economique6.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser les données de consommation pour analyser les
+											habitudes de consommation et identifier les segments de marché ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/economique7.png')">
+									<a href="#" id="links">
+										<p>Quels sont les modèles de prévision les plus appropriés pour estimer les
+											ventes ou les revenus d'une entreprise ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/economique8.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je analyser les données financières pour évaluer la performance
+											et la stabilité financière d'une entreprise ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/economique9.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les meilleures pratiques pour analyser les données du commerce
+											international, telles que les échanges commerciaux et les flux de capitaux ?
+										</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/economique10.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser l'apprentissage automatique pour détecter les
+											anomalies économiques ou les schémas de fraude ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<!-- ... Autres éléments de la liste ... -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- DIV 4 -->
+				<div id="questions4" style="display: none;">
+					<div class="table-data">
+						<div class="todo">
+							<div class="head">
+								<h3>Educatif</h3>
+								<i class='bx bx-plus'></i>
+								<i class='bx bx-filter'></i>
+							</div>
+							<ul class="todo-list">
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/educatif1.png')">
+									<a href="#" id="links"><span class="text">Quelles sont les tendances actuelles en
+											matière de résultats scolaires dans une région ou un système éducatif donné
+											?</span></a>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/educatif2.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je identifier les facteurs qui influencent la réussite scolaire
+											des élèves ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/educatif3.png')">
+									<a href="#" id="links">
+										<p>Quels sont les modèles prédictifs les plus appropriés pour estimer les
+											performances futures des élèves ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/educatif4.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser les données sur les effectifs des classes pour
+											optimiser la répartition des ressources éducatives ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/educatif5.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les méthodes d'analyse statistique pour évaluer l'efficacité
+											d'une intervention éducative ou d'un programme scolaire ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="completed"
+									onclick="showVisualisation(); changeImage('data_img/educatif6.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser les données démographiques pour analyser les
+											disparités d'accès à l'éducation ou de performances entre différents groupes
+											d'élèves ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed"
+									onclick="showVisualisation(); changeImage('data_img/educatif7.png')">
+									<a href="#" id="links">
+										<p>Quels sont les indicateurs clés de performance utilisés pour évaluer la
+											qualité d'une école ou d'un système éducatif ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed3"
+									onclick="showVisualisation(); changeImage('data_img/educatif8.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je analyser les données des évaluations nationales ou
+											internationales pour comparer les performances des élèves à l'échelle
+											nationale ou internationale ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed4"
+									onclick="showVisualisation(); changeImage('data_img/educatif9.png')">
+									<a href="#" id="links">
+										<p>Quelles sont les meilleures pratiques pour l'utilisation des technologies
+											éducatives basées sur les données ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<li class="not-completed5"
+									onclick="showVisualisation(); changeImage('data_img/educatif10.png')">
+									<a href="#" id="links">
+										<p>Comment puis-je utiliser l'apprentissage automatique pour détecter les
+											schémas d'apprentissage des élèves et personnaliser les méthodes
+											d'enseignement ?</p>
+									</a>
+									<i class='bx bx-dots-vertical-rounded'></i>
+								</li>
+								<!-- ... Autres éléments de la liste ... -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END QUESTIONS -->
+		</main>
+		<!-- MAIN -->
+
+	</section>
+	<!-- CONTENT -->
+
+     
+	<script src="script.js"></script>
+</body>
+
+</html>
